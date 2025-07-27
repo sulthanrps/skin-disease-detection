@@ -5,12 +5,19 @@ import ImageUploader from "./components/imageUploader";
 import TabNavigation from "./components/tabNavigation";
 import DisplayResult from "./components/displayResult";
 
+interface IGeminiResponseData {
+  namaPenyakit: string;
+  tingkatBahaya: string;
+  penangananUmum: string;
+  tingkatKepercayaan: number;
+}
+
 const MainLayout = () => {
     const [tabActive, setTabActive] = useState<'upload' | 'scan'>('scan');
     const [imagePreviewURL, setImagePreviewURL] = useState<string | null>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [predictionResult, setPredictionResult] = useState<string | null>(null);
+    const [predictionResult, setPredictionResult] = useState<IGeminiResponseData | null>(null);
 
     const handleImageSelected = useCallback((file: File) => {
         setSelectedFile(file);
@@ -50,11 +57,17 @@ const MainLayout = () => {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
-                const data = await response.json();
-                setPredictionResult(data.prediction || 'Tidak dapat menganalisis gambar.');
+                const data: IGeminiResponseData = await response.json();
+                console.log(data, "<< data dari be di fe");
+                setPredictionResult(data || 'Tidak dapat menganalisis gambar.');
             } catch (error) {
                 console.error('Error analyzing image:', error);
-                setPredictionResult('Terjadi kesalahan saat menganalisis gambar. Coba lagi.');
+                setPredictionResult({ // <--- SET FALLBACK SEBAGAI OBJEK
+                    namaPenyakit: "Gagal Analisis",
+                    tingkatBahaya: "Tidak diketahui",
+                    penangananUmum: `Terjadi kesalahan saat menganalisis`,
+                    tingkatKepercayaan: 0
+                });
             } finally {
                 setIsLoading(false);
             }
@@ -62,7 +75,12 @@ const MainLayout = () => {
         reader.onerror = () => {
             console.error("Error reading file");
             setIsLoading(false);
-            setPredictionResult("Gagal membaca file gambar.");
+            setPredictionResult({
+                namaPenyakit: "Gagal Membaca File",
+                tingkatBahaya: "Tidak diketahui",
+                penangananUmum: "Gagal membaca file gambar.",
+                tingkatKepercayaan: 0
+            });
         };
     };
     return (

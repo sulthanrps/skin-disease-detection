@@ -1,12 +1,20 @@
 import React from 'react';
 
+interface IGeminiResponseData {
+  namaPenyakit: string;
+  tingkatBahaya: string;
+  penangananUmum: string;
+  tingkatKepercayaan: number;
+}
+
 interface IDisplayResultProps {
   imagePreviewUrl: string | null;
   isLoading: boolean;
-  predictionResult: string | null;
+  predictionResult: IGeminiResponseData | null;
 }
 
 const DisplayResult: React.FC<IDisplayResultProps> = ({ imagePreviewUrl, isLoading, predictionResult }) => {
+  console.log("ResultDisplay - predictionResult:", predictionResult);
   return (
     <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg max-w-lg mt-4 mx-auto w-full">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Hasil Analisis</h2>
@@ -35,8 +43,18 @@ const DisplayResult: React.FC<IDisplayResultProps> = ({ imagePreviewUrl, isLoadi
       {!isLoading && predictionResult && (
         <div className="w-full bg-[#83256e] p-4 rounded-md border border-[#ad2f91] text-white text-center">
           <h3 className="text-lg font-semibold mb-2">Hasil Prediksi AI:</h3>
-          {/* whitespace-pre-wrap agar newline dari hasil Gemini bisa ditampilkan */}
-          <p className="whitespace-pre-wrap text-left">{predictionResult}</p>
+          <p className="mb-2">
+            Penyakit yang anda alami adalah : <span className="font-semibold">{predictionResult.namaPenyakit}</span>
+          </p>
+          <p className="mb-2">
+            Tingkah Bahayanya yakni : <span className="font-semibold">{predictionResult.tingkatBahaya}</span>
+          </p>
+          <p className="mb-2">
+             Penanganannya dapat berupa : {predictionResult.penangananUmum}
+          </p>
+          <p className="mb-2">
+            Tingkat keakuratan : <span className="font-semibold">{predictionResult.tingkatKepercayaan}%</span>
+          </p>
         </div>
       )}
 
