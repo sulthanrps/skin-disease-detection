@@ -1,6 +1,13 @@
 import { NextResponse } from 'next/server';
 import { getGeminiModel, fileToGenerativePart } from "../../../lib/gemini";
 
+interface IGeminiResponseData {
+  namaPenyakit: string;
+  tingkatBahaya: string;
+  penangananUmum: string;
+  tingkatKepercayaan: number;
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -89,10 +96,17 @@ export async function POST(request: Request) {
         // console.log(parsedResult)
         return NextResponse.json(parsedResult);
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error processing image with Gemini:', error);
+    const errorMessage = (error instanceof Error) ? error.message : String(error);
+
     return NextResponse.json(
-      { error: 'Failed to analyze image.', details: error.message },
+      {
+        namaPenyakit: "Error Server", // Sesuaikan dengan properti fallback di interface
+        tingkatBahaya: "Tidak diketahui",
+        penangananUmum: `Terjadi kesalahan di server: ${errorMessage}`, // <--- PERBAIKAN DI SINI
+        tingkatKepercayaan: 0
+      } as IGeminiResponseData, // Pastikan ini sesuai interface IGeminiResponseData
       { status: 500 }
     );
   }

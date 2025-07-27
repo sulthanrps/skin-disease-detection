@@ -3,7 +3,7 @@ import React from "react";
 interface ITabNavProps {
     activeTab: 'upload' | 'scan';
     onTabChange: (tab: 'upload' | 'scan') => void;
-    className: String;
+    className: string;
 }
 
 const TabNavigation: React.FC<ITabNavProps> = ({activeTab, onTabChange, className}) => {

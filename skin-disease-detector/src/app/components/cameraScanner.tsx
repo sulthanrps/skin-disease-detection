@@ -9,7 +9,7 @@ const CameraScanner: React.FC<ICapturedPicture> = ({onImageCaptured}) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     const [stream, setStream] = useState<MediaStream | null>(null)
-    const [error, setError] = useState<String | null>(null)
+    const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
         let activeMediaStream: MediaStream | null = null;
@@ -31,7 +31,7 @@ const CameraScanner: React.FC<ICapturedPicture> = ({onImageCaptured}) => {
                     setError(null)
                     console.log("Camera started successfully."); 
                 }
-            } catch (err: any) {
+            } catch (err: unknown) {
                 console.error("Error accessing camera:", err);
                 setError("Tidak dapat mengakses kamera. Pastikan izin kamera diberikan.");
                 setStream(null);
