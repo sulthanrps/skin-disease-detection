@@ -14,7 +14,7 @@ interface IDisplayResultProps {
 }
 
 const DisplayResult: React.FC<IDisplayResultProps> = ({ imagePreviewUrl, isLoading, predictionResult }) => {
-  console.log("ResultDisplay - predictionResult:", predictionResult);
+  // console.log("ResultDisplay - predictionResult:", predictionResult);
   return (
     <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg max-w-lg mt-4 mx-auto w-full">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Hasil Analisis</h2>

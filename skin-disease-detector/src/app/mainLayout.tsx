@@ -58,7 +58,7 @@ const MainLayout = () => {
                 }
 
                 const data: IGeminiResponseData = await response.json();
-                console.log(data, "<< data dari be di fe");
+                // console.log(data, "<< data dari be di fe");
                 setPredictionResult(data || 'Tidak dapat menganalisis gambar.');
             } catch (error) {
                 console.error('Error analyzing image:', error);

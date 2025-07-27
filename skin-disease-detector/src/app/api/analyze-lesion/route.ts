@@ -86,7 +86,7 @@ export async function POST(request: Request) {
         // `;
 
         // Mengembalikan hasil analisis yang sudah diformat ke frontend
-        console.log(parsedResult)
+        // console.log(parsedResult)
         return NextResponse.json(parsedResult);
 
   } catch (error: any) {
