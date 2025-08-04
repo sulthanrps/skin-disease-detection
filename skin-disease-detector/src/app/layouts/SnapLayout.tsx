@@ -1,9 +1,11 @@
+"use client"
+
 import React from "react";
 import { useCallback, useState } from "react";
-import CameraScanner from "./components/cameraScanner";
-import ImageUploader from "./components/imageUploader";
-import TabNavigation from "./components/tabNavigation";
-import DisplayResult from "./components/displayResult";
+import CameraScanner from "../components/SnapPage/cameraScanner";
+import ImageUploader from "../components/SnapPage/imageUploader";
+import TabNavigation from "../components/SnapPage/tabNavigation";
+import DisplayResult from "../components/SnapPage/displayResult";
 
 interface IGeminiResponseData {
   namaPenyakit: string;
@@ -12,7 +14,7 @@ interface IGeminiResponseData {
   tingkatKepercayaan: number;
 }
 
-const MainLayout = () => {
+const SnapLayout = () => {
     const [tabActive, setTabActive] = useState<'upload' | 'scan'>('scan');
     const [imagePreviewURL, setImagePreviewURL] = useState<string | null>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -62,7 +64,7 @@ const MainLayout = () => {
                 setPredictionResult(data || 'Tidak dapat menganalisis gambar.');
             } catch (error) {
                 console.error('Error analyzing image:', error);
-                setPredictionResult({ // <--- SET FALLBACK SEBAGAI OBJEK
+                setPredictionResult({
                     namaPenyakit: "Gagal Analisis",
                     tingkatBahaya: "Tidak diketahui",
                     penangananUmum: `Terjadi kesalahan saat menganalisis`,
@@ -84,7 +86,7 @@ const MainLayout = () => {
         };
     };
     return (
-        <div className={`flex flex-col w-full ${tabActive == "upload" ? "min-h-screen h-fit" : "h-full"} my-4 p-8 justify-center items-center`}>
+        <div className={`flex flex-col w-[80%] ${tabActive == "upload" ? "min-h-screen h-fit" : "h-full"} my-4 p-8 justify-center items-center`}>
             <TabNavigation activeTab={tabActive} onTabChange={handleTabChange} className="mb-4" />
 
             {
@@ -120,4 +122,4 @@ const MainLayout = () => {
     )
 }
 
-export default MainLayout;
+export default SnapLayout;

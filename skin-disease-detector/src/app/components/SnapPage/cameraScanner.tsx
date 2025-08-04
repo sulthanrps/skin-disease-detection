@@ -17,7 +17,7 @@ const CameraScanner: React.FC<ICapturedPicture> = ({onImageCaptured}) => {
             try {
                 const mediaStream = await navigator.mediaDevices.getUserMedia({
                     video: {
-                        width: { ideal: 640 },  // Tambahkan ini: Lebar ideal 640px
+                        width: { ideal: 640 }, 
                         height: { ideal: 480 },
                         facingMode: "environment"
                     }
@@ -25,7 +25,6 @@ const CameraScanner: React.FC<ICapturedPicture> = ({onImageCaptured}) => {
 
                 if(videoRef.current) {
                     videoRef.current.srcObject = mediaStream;
-                    // await videoRef.current.play();
                     setStream(mediaStream);
                     activeMediaStream = mediaStream
                     setError(null)

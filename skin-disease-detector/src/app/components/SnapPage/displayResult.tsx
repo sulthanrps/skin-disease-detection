@@ -31,7 +31,6 @@ const DisplayResult: React.FC<IDisplayResultProps> = ({ imagePreviewUrl, isLoadi
         </div>
       )}
 
-      {/* Indikator Loading */}
       {isLoading && (
         <div className="flex items-center space-x-2 text-[#83256e]">
           <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#83256e]"></div>
@@ -39,7 +38,6 @@ const DisplayResult: React.FC<IDisplayResultProps> = ({ imagePreviewUrl, isLoadi
         </div>
       )}
 
-      {/* Tampilan Hasil Prediksi AI */}
       {!isLoading && predictionResult && (
         <div className="w-full bg-[#83256e] p-4 rounded-md border border-[#ad2f91] text-white text-center">
           <h3 className="text-lg font-semibold mb-2">Hasil Prediksi AI:</h3>
@@ -58,16 +56,9 @@ const DisplayResult: React.FC<IDisplayResultProps> = ({ imagePreviewUrl, isLoadi
         </div>
       )}
 
-      {/* Pesan default jika belum ada gambar/analisis */}
       {!imagePreviewUrl && !isLoading && !predictionResult && (
         <p className="text-gray-500 text-center">Unggah atau ambil foto untuk memulai analisis.</p>
       )}
-
-      {/* Disclaimer Penting
-      <p className="mt-6 text-sm text-gray-600 text-center">
-        *Disclaimer: Analisis ini hanya untuk tujuan informasi dan bukan pengganti diagnosis medis profesional.
-        Selalu konsultasikan dengan dokter kulit untuk kondisi medis.
-      </p> */}
     </div>
   );
 };

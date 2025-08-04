@@ -1,8 +1,12 @@
 "use client"
-import MainLayout from "./mainLayout";
+import React, { useState } from 'react';
+import LandingLayout from './layouts/LandingLayout';
 
 export default function Home() {
   return (
-    <MainLayout></MainLayout>
+    <>
+        <LandingLayout></LandingLayout>
+    </>
+    
   );
 }

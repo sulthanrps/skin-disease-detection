@@ -57,14 +57,12 @@ export async function POST(request: Request) {
           { text: promptText },
         ];
 
-        // Lakukan request ke Gemini API
         const result = await model.generateContent({ contents: [{ role: "user", parts }] });
         const response = result.response;
         let text = response.text();
 
         text = text.replace(/```json\n/g, '').replace(/\n```/g, '').trim();
 
-        // Coba parse teks sebagai JSON
         let parsedResult: {
           namaPenyakit: string;
           tingkatBahaya: string;
@@ -76,7 +74,6 @@ export async function POST(request: Request) {
           parsedResult = JSON.parse(text);
         } catch (jsonError) {
           console.error("Failed to parse Gemini response as JSON:", jsonError);
-          // Fallback jika Gemini tidak memberikan JSON yang valid
           parsedResult = {
             namaPenyakit: "Analisis Gagal",
             tingkatBahaya: "Tidak diketahui",
@@ -84,16 +81,6 @@ export async function POST(request: Request) {
             tingkatKepercayaan: 0
           };
         }
-
-        // Sekarang kita bisa memformat ulang untuk frontend
-        // const formattedPrediction = `
-        //   Penyakit kulit yang Anda alami adalah ${parsedResult.namaPenyakit}.
-        //   Penyakit ini ${parsedResult.tingkatBahaya} dan umumnya dapat ditangani dengan ${parsedResult.penangananUmum}.
-        //   Tingkat kepercayaan: ${parsedResult.tingkatKepercayaan}%.
-        // `;
-
-        // Mengembalikan hasil analisis yang sudah diformat ke frontend
-        // console.log(parsedResult)
         return NextResponse.json(parsedResult);
 
   } catch (error: unknown) {
@@ -102,11 +89,11 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       {
-        namaPenyakit: "Error Server", // Sesuaikan dengan properti fallback di interface
+        namaPenyakit: "Error Server", 
         tingkatBahaya: "Tidak diketahui",
-        penangananUmum: `Terjadi kesalahan di server: ${errorMessage}`, // <--- PERBAIKAN DI SINI
+        penangananUmum: `Terjadi kesalahan di server: ${errorMessage}`,
         tingkatKepercayaan: 0
-      } as IGeminiResponseData, // Pastikan ini sesuai interface IGeminiResponseData
+      } as IGeminiResponseData, 
       { status: 500 }
     );
   }
