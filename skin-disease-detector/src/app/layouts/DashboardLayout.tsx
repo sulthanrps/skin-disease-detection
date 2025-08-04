@@ -75,7 +75,7 @@ export default function DashboardLayout() {
                 const data: IOutfitRecommendation = await response.json();
                 setRecommendation(data);
                 setRecLoading(false);
-            } catch (err: any) {
+            } catch (err: unknown) {
                 console.error("Recommendation fetch error:", err);
                 setRecommendation({
                     uvProtection: "Tidak dapat memuat rekomendasi UV.",
@@ -106,8 +106,8 @@ export default function DashboardLayout() {
                 setWeatherData(data);
                 await fetchOutfitRecommendation(data);
                 setIsLoading(false)
-            } catch (err: any) {
-                setError(err.message);
+            } catch (err: unknown) {
+                console.error(err);
             } finally {
                 setIsLoading(false);
             }
