@@ -14,7 +14,7 @@ const Sidebar: React.FC<ISideBarProps> = ({activeBar, onTabChange}) => {
                 <img src="/logo.png" alt="logo" className="w-20 md:w-24"/>
                 <h1 className="text-4xl font-bold -ml-4 hidden md:block">SkinSnap</h1>
             </div>
-            <div className="p-4 flex flex-col gap-8 mt-8">
+            <div className="p-2 md:p-4 flex flex-col gap-8 mt-8">
                 <div className={`flex gap-3 items-center font-semibold text-xl p-2 hover:cursor-pointer hover:text-white transition duration-200 easeInOut md:p-4 md:pl-6 rounded-lg backdrop-blur-sm ${activeBar === "Dashboard" ? "bg-white/40 text-white border-2 border-grey" : "bg-white/20"}`} onClick={() => onTabChange('Dashboard')}>
                     <Home />
                     <Link href="" className="hidden md:block">Dashboard</Link>

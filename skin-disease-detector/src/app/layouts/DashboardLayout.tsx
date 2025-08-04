@@ -156,7 +156,7 @@ export default function DashboardLayout() {
                                         <img src={weatherData.current.condition.icon} alt={weatherData.current.condition.text} />
                                     </div>
                                 </div>
-                                <div className="mt-8 pt-6 border-t border-white/30 grid grid-cols-2 md:grid-cols-3 gap-6">
+                                <div className="mt-8 pt-6 pr-2 md:pr-0 border-t border-white/30 grid grid-cols-2 md:grid-cols-3 gap-6">
                                     <WeatherStat icon={<Sun size={20} />} value={`${weatherData.current.uv}`} label="UV Index" />
                                     <WeatherStat icon={<Droplets size={20} />} value={`${weatherData.current.humidity}%`} label="Kelembapan" />
                                     <WeatherStat icon={<Wind size={20} />} value={`${weatherData.current.wind_kph} km/j`} label="Angin" />
