@@ -23,7 +23,7 @@ interface IDummyDoctor {
   position: [number, number]; // [latitude, longitude]
 }
 
-const dummyDoctors = 
+const dummyDoctors: IDummyDoctor[] = 
 [
   {
     name: "Naavagreen Natural Skin Care Malang",
@@ -153,7 +153,8 @@ const NearbyDoctor = () => {
     iconSize: [38, 38],
   });
 
-  const createCustomIcon = (customIcon ,size = 24) => {
+  const createCustomIcon = () => {
+    const size = 24;
     const htmlIcon = ReactDOMServer.renderToString(
       <div className='px-4 py-1 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full'>
         <CircleUserRound size={size} className='-ml-3' color='white' />
@@ -168,7 +169,7 @@ const NearbyDoctor = () => {
     });
   }
   
-  const userIcon = createCustomIcon(CircleUserRound)
+  const userIcon = createCustomIcon();
 
   if (error) {
     return <div className="p-4 bg-red-100 text-red-700 rounded-lg">Error: {error}</div>;
