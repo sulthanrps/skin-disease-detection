@@ -16,21 +16,26 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+TechStack yang digunakan : 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Next.js: 15.4.2 - Framework React untuk full-stack, mendukung Server-Side Rendering (SSR) dan Static Site Generation (SSG).
 
-## Learn More
+2. React: 19.1.0 - Library JavaScript untuk membangun antarmuka pengguna.
 
-To learn more about Next.js, take a look at the following resources:
+3. React DOM: 19.1.0 - Memberikan metode khusus DOM yang diperlukan React.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. @google/generative-ai: ^0.24.1 - Library resmi untuk berinteraksi dengan Google Generative AI, seperti Gemini.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. leaflet: ^1.9.4 - Library JavaScript untuk peta interaktif.
 
-## Deploy on Vercel
+6. lucide-react: ^0.536.0 - Koleksi ikon yang dapat disesuaikan untuk React.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+7. react-leaflet: ^5.0.0 - Library untuk mengintegrasikan Leaflet dengan React.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+8. react-icon: ^1.0.0 - Library untuk menggunakan ikon.
+
+9. TypeScript: ^5 - Superset JavaScript yang menambahkan pengetikan statis, membantu mencegah error.
+
+10. tailwindcss: ^4 - Framework CSS untuk mendesain dengan utility-first.
+
+11. @tailwindcss/postcss: ^4 - Plugin untuk PostCSS agar dapat memproses Tailwind CSS.
