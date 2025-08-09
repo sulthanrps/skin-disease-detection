@@ -129,9 +129,8 @@ const NearbyDoctor = () => {
 
         setDoctors(validDoctors);
 
-      } catch (err: any) {
+      } catch (err) {
         console.error("Doctor processing error:", err);
-        setError(err.message);
       } finally {
         setIsLoading(false);
       }
