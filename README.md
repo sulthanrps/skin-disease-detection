@@ -9,8 +9,8 @@ SkinSnap adalah platform kesehatan kulit berbasis web yang revolusioner, diranca
 
 1. Clone github ini
 ```bash
-https://github.com/sulthanrps/skin-disease-detection.git
-cd skin-disease-detection
+https://github.com/sulthanrps/skin-snap-fe.git
+cd skin-snap-fe
 ```
 2. Salin .env copy.local
 ```bash
