@@ -1,23 +1,26 @@
+## Link Github Back End
+```
+https://github.com/sulthonaw/skinsnap-node-js
+```
 ## Deskripsi SkinSnap
 SkinSnap adalah platform kesehatan kulit berbasis web yang revolusioner, dirancang untuk memberikan akses mudah dan cerdas ke layanan diagnosis, konsultasi, dan perawatan kulit. Dengan memanfaatkan teknologi kecerdasan buatan (AI) dan ekosistem terintegrasi, SkinSnap bertujuan untuk memberdayakan pengguna agar dapat mengelola kesehatan kulit mereka secara proaktif dan efektif.
 
-## Fitur Utama
-
-- Deteksi AI Instan: Unggah foto kulit Anda dan dapatkan analisis awal kondisi kulit secara cepat dan akurat.
-
-- Konsultasi Pakar Online: Terhubung langsung dengan dokter spesialis kulit untuk saran, diagnosis lebih lanjut, dan resep yang terpercaya.
-
-- Rekomendasi Produk Personal: Dapatkan rekomendasi produk perawatan kulit yang dipersonalisasi sesuai dengan hasil deteksi dan kebutuhan Anda.
-
-- Marketplace Terintegrasi: Beli produk skincare dan obat-obatan yang direkomendasikan langsung dari platform, dengan jaminan keaslian.
-
-- Insight Cuaca Harian: Pantau kondisi cuaca terkini seperti indeks UV, suhu, dan kelembaban untuk perlindungan kulit yang proaktif.
-
-- Manajemen Rekam Medis: Simpan riwayat kondisi kulit, pengingat obat, dan perjalanan perawatan dalam satu tempat.
-
 ## Cara Run SkinSNap
 
-ketikkan command berikut di terminal
+1. Clone github ini
+```bash
+https://github.com/sulthanrps/skin-disease-detection.git
+cd skin-disease-detection
+```
+2. Salin .env copy.local
+```bash
+cp .env copy.local .env.local
+```
+3. Install Dependencies
+```bash
+npm install
+```
+4. Jalankan website dengan kode berikut : 
 
 ```bash
 npm run dev
