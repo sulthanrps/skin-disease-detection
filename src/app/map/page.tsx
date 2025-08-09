@@ -83,7 +83,7 @@ const ChangeView = ({ center }: { center: [number, number] }) => {
 const NearbyDoctor = () => {
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [doctors, setDoctors] = useState<Doctor[]>([]);
+  const [doctors, setDoctors] = useState<IDummyDoctor[]>([]);
   const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
@@ -124,7 +124,7 @@ const NearbyDoctor = () => {
         const doctorsWithCoords = await Promise.all(geocodingPromises);
 
         const validDoctors = doctorsWithCoords.filter(
-          (doctor): doctor is Doctor => doctor.position !== null
+          (doctor): doctor is IDummyDoctor => doctor.position !== null
         );
 
         setDoctors(validDoctors);
