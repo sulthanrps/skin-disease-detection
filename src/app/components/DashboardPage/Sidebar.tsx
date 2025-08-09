@@ -16,17 +16,17 @@ const Sidebar: React.FC<ISideBarProps> = ({activeBar, onTabChange}) => {
             </div>
             <div className="p-2 md:p-4 flex flex-col gap-8 mt-8">
                 <div className={`flex gap-3 items-center font-semibold text-xl p-2 hover:cursor-pointer hover:text-white transition duration-200 easeInOut md:p-4 md:pl-6 rounded-lg backdrop-blur-sm ${activeBar === "Dashboard" ? "bg-white/40 text-white border-2 border-grey" : "bg-white/20"}`} onClick={() => onTabChange('Dashboard')}>
-                    <Home />
+                    <Home className="w-fit" />
                     <Link href="" className="hidden md:block">Dashboard</Link>
                 </div>
 
                 <div className={`flex gap-3 items-center font-semibold text-xl p-2 hover:cursor-pointer hover:text-white transition duration-200 easeInOut md:p-4 md:pl-6 rounded-lg backdrop-blur-sm ${activeBar === "Snap" ? "bg-white/40 text-white border-2 border-grey" : "bg-white/20"}`} onClick={() => onTabChange('Snap')}>
-                    <Focus />
+                    <Focus className="w-fit" />
                     <Link href="" className="hidden md:block">Snap</Link>
                 </div>
 
                 <div className={`flex gap-3 items-center font-semibold text-xl p-2 hover:cursor-pointer hover:text-white transition duration-200 easeInOut md:p-4 md:pl-6 rounded-lg backdrop-blur-sm ${activeBar === "Map" ? "bg-white/40 text-white border-2 border-grey" : "bg-white/20"}`} onClick={() => onTabChange('Map')}>
-                    <Map />
+                    <Map className="w-fit" />
                     <Link href="" className="hidden md:block">Map</Link>
                 </div>
             </div>

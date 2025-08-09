@@ -1,10 +1,13 @@
 "use client"
-
+import dynamic from "next/dynamic";
 import Sidebar from "../components/DashboardPage/Sidebar";
 import DashboardLayout from "../layouts/DashboardLayout";
 import { useState, useCallback } from "react";
 import SnapLayout from "../layouts/SnapLayout";
-import NearbyDoctor from "../map/page";
+
+const NearbyDoctor = dynamic(() => import("../map/page"), {
+  ssr: false,
+});
 
 const Dashboard = () => {
     const [tabActive, setTabActive] = useState<'Dashboard' | 'Snap' | 'Map'>('Dashboard');
